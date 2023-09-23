@@ -11,12 +11,14 @@ namespace AuthAPI.Service
         private readonly AuthAPIContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-        public AuthService(AuthAPIContext db, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AuthService(AuthAPIContext db, IJwtTokenGenerator jwtTokenGenerator, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _db = db;
             _userManager = userManager;
             _roleManager = roleManager;
+            _jwtTokenGenerator = jwtTokenGenerator;
         }
 
         public async Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
@@ -29,6 +31,7 @@ namespace AuthAPI.Service
                 return new LoginResponseDTO() { User = null, Token = "" };
             }
 
+            var token = _jwtTokenGenerator.GenerateToken(user);
             UserDTO userDTO = new()
             {
                 Email = user.Email,
@@ -40,7 +43,7 @@ namespace AuthAPI.Service
             LoginResponseDTO loginResponseDTO = new LoginResponseDTO()
             {
                 User = userDTO,
-                Token = ""
+                Token = token
             };
             return loginResponseDTO;
         }

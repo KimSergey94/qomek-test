@@ -1,5 +1,6 @@
 ﻿using AuthAPI.Models;
 using AuthAPI.Service.IService;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,9 +12,9 @@ namespace AuthAPI.Service
     {
         private readonly JwtOptions _jwtOptions;
 
-        public JwtTokenGenerator(JwtOptions jwtOptions)
+        public JwtTokenGenerator(IOptions<JwtOptions> jwtOptions)
         {
-            _jwtOptions = jwtOptions;
+            _jwtOptions = jwtOptions.Value;
         } 
 
         public string GenerateToken(ApplicationUser applicationUser)
