@@ -1,4 +1,4 @@
-﻿namespace AuthAPI.Models.DTO
+﻿namespace BlogAPI.Models.DTO
 {
     public class ResponseDTO
     {

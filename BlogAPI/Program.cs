@@ -1,4 +1,6 @@
 using BlogAPI.Data;
+using BlogAPI.Service;
+using BlogAPI.Service.IService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +16,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<IPostHandler, PostHandler>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
