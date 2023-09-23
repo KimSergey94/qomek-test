@@ -3,9 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{9BE492AA-8EE2-4746-A3E5-BA9161AA6105}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C42258D1-641F-4148-BF93-BD99E0C98112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{9B0B9DDD-2AFD-4F9E-935C-13AC457434BD}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B0B9DDD-2AFD-4F9E-935C-13AC457434BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B0B9DDD-2AFD-4F9E-935C-13AC457434BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B0B9DDD-2AFD-4F9E-935C-13AC457434BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B0B9DDD-2AFD-4F9E-935C-13AC457434BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B0B9DDD-2AFD-4F9E-935C-13AC457434BD} = {C42258D1-641F-4148-BF93-BD99E0C98112}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C73470A2-12BB-4944-A5DB-59BD76E1F9C4}
