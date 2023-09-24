@@ -13,9 +13,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IAuthService, AuthService>();
 
-SD.AuthAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
-SD.BlogAPIBase = builder.Configuration["ServiceUrls:BlogAPI"];
-SD.ChatAPIBase = builder.Configuration["ServiceUrls:ChatAPI"];
+SD.AuthAPIBase = builder.Configuration["ServicesUrls:AuthAPI"];
+SD.BlogAPIBase = builder.Configuration["ServicesUrls:BlogAPI"];
+SD.ChatAPIBase = builder.Configuration["ServicesUrls:ChatAPI"];
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
