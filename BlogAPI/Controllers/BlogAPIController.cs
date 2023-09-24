@@ -1,6 +1,7 @@
 ﻿using BlogAPI.Models.DTO;
 using BlogAPI.Service;
 using BlogAPI.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace BlogAPI.Controllers
             _response = new();
         }
 
+        [Authorize]
         [HttpGet("/")]
         public async Task<IActionResult> GetPosts()
         {

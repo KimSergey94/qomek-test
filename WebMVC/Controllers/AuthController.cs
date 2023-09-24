@@ -41,7 +41,8 @@ namespace WebMVC.Controllers
             }
             else
             {
-                ModelState.AddModelError("CustomError", result.Message);
+                TempData["error"] = result.Message;
+                //ModelState.AddModelError("CustomError", result.Message);
                 return View(loginRequestDTO);
             }
         }
@@ -57,10 +58,14 @@ namespace WebMVC.Controllers
         {
             ResponseDTO result = await _authService.RegisterAsync(registrationRequestDTO);
 
-            if(result != null && result.IsSuccess)
+            if (result != null && result.IsSuccess)
             {
                 TempData["success"] = "Registration successful";
                 return RedirectToAction(nameof(Login));
+            }
+            else
+            {
+                TempData["error"] = result.Message;
             }
             return View(registrationRequestDTO);
         }
