@@ -21,7 +21,7 @@ namespace BlogAPI.Controllers
         }
 
         [Authorize]
-        [HttpGet("/")]
+        [HttpGet]
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _postHandler.GetPosts();
@@ -29,7 +29,16 @@ namespace BlogAPI.Controllers
             return Ok(_response);
         }
 
-        [HttpPost("/")]
+        [HttpGet]
+        [Route("/{id}")]
+        public async Task<IActionResult> GetPost(int id)
+        {
+            var post = await _postHandler.GetPostById(id);
+            _response.Result = post;
+            return Ok(_response);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreatePost([FromBody] PostRequestDTO model)
         {
             var errorMessage = await _postHandler.CreatePost(model);
@@ -42,7 +51,7 @@ namespace BlogAPI.Controllers
             return Ok(_response);
         }
 
-        [HttpPut("/")]
+        [HttpPut]
         public async Task<IActionResult> EditPost([FromBody] PostRequestDTO model)
         {
             var errorMessage = await _postHandler.EditPost(model);
@@ -55,7 +64,7 @@ namespace BlogAPI.Controllers
             return Ok(_response);
         }
 
-        [HttpDelete("/")]
+        [HttpDelete]
         public async Task<IActionResult> DeletePost([FromBody] PostRequestDTO model)
         {
             var errorMessage = await _postHandler.DeletePost(model);

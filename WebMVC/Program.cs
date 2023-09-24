@@ -21,6 +21,7 @@ SD.ChatAPIBase = builder.Configuration["ServicesUrls:ChatAPI"];
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
+builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
     options.ExpireTimeSpan = TimeSpan.FromHours(10);
     options.LoginPath = "/Auth/Login";

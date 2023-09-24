@@ -80,6 +80,12 @@ namespace BlogAPI.Service
             }
         }
 
+        public async Task<PostResponseDTO> GetPostById(int Id)
+        {
+            var post = await _db.Posts.FirstOrDefaultAsync(post => post.Id == Id);
+            return await Task.Run(post.ConvertToPostResponseDTOList);
+        }
+
         public async Task<IEnumerable<PostResponseDTO>> GetPosts()
         {
             var posts = _db.Posts.ToList();

@@ -1,0 +1,37 @@
+﻿@using WebMVC.Models.DTO
+@model IEnumerable<PostDTO>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Blog posts</h1>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6"></div>
+            <div class="col-6 text-end">
+                <a asp-action="CreatePost" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Create new post</a>
+            </div>
+        </div>
+
+        <ul class="posts">
+            @foreach (var post in Model)
+            {
+                <li class="post">
+                    <div class="post-title"><span class="post-title-header">@post.Title</span><span class="post-title-user">@post.UserId</span></div>
+                    <div class="post-body">
+                        @post.Body
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+
+</div>

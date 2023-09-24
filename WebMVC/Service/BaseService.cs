@@ -18,7 +18,6 @@ namespace WebMVC.Service
             _tokenProvider = tokenProvider;
         }
 
-
         public async Task<ResponseDTO?> SendAsync(RequestDTO requestDTO, bool withBearer = true)
         {
             try

@@ -1,4 +1,5 @@
 ﻿using BlogAPI.Models.DTO;
+using Microsoft.Extensions.Hosting;
 
 namespace BlogAPI.Models
 {
@@ -26,6 +27,16 @@ namespace BlogAPI.Models
                 });
             }
             return postResponseDTOs;
+        }
+        public static PostResponseDTO ConvertToPostResponseDTOList(this Post post)
+        {
+            return new PostResponseDTO()
+            {
+                Body = post.Body,
+                Title = post.Title,
+                Id = post.Id,
+                UserId = post.UserId
+            };
         }
     }
 }
